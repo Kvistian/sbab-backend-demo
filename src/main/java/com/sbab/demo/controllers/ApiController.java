@@ -5,6 +5,7 @@ import com.sbab.demo.controllers.dto.StopPointDto;
 import com.sbab.demo.services.TrafikLabService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ public class ApiController {
         this.modelMapper = modelMapper;
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/stops")
     public List<StopPointDto> getStops() {
         return trafikLabService.getStops().stream()
@@ -32,6 +34,7 @@ public class ApiController {
                 .subList(0, 10);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/lines")
     public List<LineDto> getLines() {
         return trafikLabService.getBusLines().stream()
